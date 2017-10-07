@@ -4,7 +4,6 @@ const should = require('should');
 let server = supertest.agent("http://localhost:3000");
 
 describe("signup tests", function () {
-    this.timeout(15000);
     it("should return a JSON 200 response when user signs up", function (done) {
         server.post("/signup")
         .send({
