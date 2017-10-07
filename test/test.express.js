@@ -33,3 +33,13 @@ describe("signup should be available", function(){
     });
 });
 
+describe("signup should be available", function(){
+    it("should return a 404 response", function(done) {
+        server.get("/random").expect(404).end(function(err,res) {
+            res.status.should.equal(404);
+            // res.body.error.should.equal(false);
+            done();
+        });
+    });
+});
+
