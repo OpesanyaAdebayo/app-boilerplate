@@ -6,18 +6,18 @@ let errormsg = ""
 
 const processFormInput = (formInput) => {
     return new Promise((resolve, reject) => {
-        db.users.findOne({email: formInput.email}, (err, profile) => {
-            if(err) {
+        db.users.findOne({
+            email: formInput.email
+        }, (err, profile) => {
+            if (err) {
                 return next(err);
-            }
-            else if(profile === null) {
+            } else if (profile === null) {
                 let password = bcrypt.hashSync(formInput.password, salt);
                 formInput.password = password;
-                db.users.save(formInput, function(err, savedprofile) {
+                db.users.save(formInput, function (err, savedprofile) {
                     resolve(savedprofile);
                 });
-            }
-            else {
+            } else {
                 errormsg = "Someone already registered with this email"
                 resolve(errormsg);
             }

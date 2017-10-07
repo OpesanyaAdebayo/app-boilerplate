@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     processInput(req.body).then(function(result) {
-        console.log(result);
+        res.json(result);
     });
 });
 
