@@ -24,37 +24,6 @@ const addUser = (formInput) => {
     });
 }
 
-const updateUser = (formInput) => {
-    return new Promise((resolve, reject) => {
-        db.collection('backofficeusers').update({
-            email: req.body.email
-        }, req.body, function (err, updatedUser) {
-            console.log(updatedUser);
-            res.json(updatedUser);
-        });
-    });
-}
-
-const deleteUser = (formInput) => {
-    return new Promise((resolve, reject) => {
-        db.collection('backofficeusers').remove({
-            email: req.body.email
-        }, req.body, function (err, result) {
-            // depending on result from Mongo, determine what the respons will be if deletion is successful
-            //use below code if you're deleting by id
-
-            //     db.collection('backofficeusers').remove({
-            //         _id: mongojs.ObjectId(req.params.id)
-            //     }, function (err, result) {
-            //         res.sendStatus(200);
-            //     })
-        });
-    });
-}
-
-
 module.exports = {
-    addUser: addUser,
-    updateUser: updateUser,
-    deleteUSer: deleteUser
+    addUser: addUser
 };
