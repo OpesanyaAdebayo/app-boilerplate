@@ -5,7 +5,7 @@ var salt = bcrypt.genSaltSync(10);
 
 const addUser = (formInput) => {
     return new Promise((resolve, reject) => {
-        db.users.findOne({
+        db.backofficeusers.findOne({
             email: formInput.email
         }, (err, profile) => {
             if (err) {
@@ -41,7 +41,13 @@ const deleteUser = (formInput) => {
             email: req.body.email
         }, req.body, function (err, result) {
             // depending on result from Mongo, determine what the respons will be if deletion is successful
-            
+            //use below code if you're deleting by id
+
+            //     db.collection('backofficeusers').remove({
+            //         _id: mongojs.ObjectId(req.params.id)
+            //     }, function (err, result) {
+            //         res.sendStatus(200);
+            //     })
         });
     });
 }
