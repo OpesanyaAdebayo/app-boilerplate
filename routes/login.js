@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const login = require('../auth/login');
-const processInput = login.processFormInput
+const userLogin = login.userLogin
 
 /* GET home page. */
 
@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    processInput(req.body).then(function(result) {
+    userLogin(req.body).then(function(result) {
         res.json(result);
     });
 });

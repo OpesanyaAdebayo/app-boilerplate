@@ -14,8 +14,8 @@ const processFormInput = (formInput) => {
             } else if (profile === null) {
                 let password = bcrypt.hashSync(formInput.password, salt);
                 formInput.password = password;
-                db.users.save(formInput, function (err, savedprofile) {
-                    resolve(savedprofile);
+                db.users.save(formInput, function (err, savedProfile) {
+                    resolve(savedProfile);
                 });
             } else {
                 errormsg = "Someone already registered with this email"
