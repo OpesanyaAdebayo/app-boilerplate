@@ -6,10 +6,15 @@ var salt = bcrypt.genSaltSync(10);
 const updateUser = (formInput) => {
     return new Promise((resolve, reject) => {
         db.collection('backofficeusers').update({
-            email: req.body.email
+            email: formInput.email
         }, req.body, function (err, updatedUser) {
-            console.log(updatedUser);
-            res.json(updatedUser);
+            if (err) {
+                return next(err);
+            }
+            else {
+                console.log(updatedUser);
+                res.json(updatedUser);
+            }
         });
     });
 }

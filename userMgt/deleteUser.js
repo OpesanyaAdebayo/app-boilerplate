@@ -6,16 +6,21 @@ var salt = bcrypt.genSaltSync(10);
 const deleteUser = (formInput) => {
     return new Promise((resolve, reject) => {
         db.collection('backofficeusers').remove({
-            email: req.body.email
+            email: formInput.email
         }, req.body, function (err, result) {
-            // depending on result from Mongo, determine what the respons will be if deletion is successful
-            //use below code if you're deleting by id
+            if (err) {
+                return next(err);
+            }
+            else{
+                // depending on result from Mongo, determine what the respons will be if deletion is successful
+                //use below code if you're deleting by id
 
-            //     db.collection('backofficeusers').remove({
-            //         _id: mongojs.ObjectId(req.params.id)
-            //     }, function (err, result) {
-            //         res.sendStatus(200);
-            //     })
+                //     db.collection('backofficeusers').remove({
+                //         _id: mongojs.ObjectId(req.params.id)
+                //     }, function (err, result) {
+                //         res.sendStatus(200);
+                //     })
+            }
         });
     });
 }
