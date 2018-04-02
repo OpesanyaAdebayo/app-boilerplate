@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const login = require('../auth/login');
-const userLogin = login.userLogin
+const tokenController = require('../auth/token');
 
 /* GET home page. */
 
@@ -10,9 +10,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    userLogin(req.body).then(function(result) {
-        res.json(result);
-    });
+    let userObject = {
+        email: req.body.email,
+        password: req.body.password
+      };
+
+    login
+    .processFormInput(userObject)
+    .then(profile => tokenController.assignToken(profile))
+    .then(token => res.json({
+      token: token
+    }))
+    .catch((err) => res.status(401).json({
+      error: err.message.toString()
+    }));
 });
 
 
