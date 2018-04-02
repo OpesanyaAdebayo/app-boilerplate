@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const signup = require('../auth/signup');
-const processInput = signup.processFormInput
+const tokenController = require('../auth/token');
 
 /* GET home page. */
 
@@ -12,9 +12,24 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    processInput(req.body).then(function (result) {
-        res.json(result);
-    });
+    let userObject = {
+        firstName: req.body.firstName.trim(),
+        lastName: req.body.lastName.trim(),
+        email: req.body.email.trim(),
+        password: req.body.password
+      };
+
+      signup
+        .processFormInput(userObject)
+        .then(profile => tokenController.assignToken(profile))
+        .then(token => {
+          res.json({
+            token: token
+          });
+        })
+        .catch((err) => res.status(400).json({
+          error: err.message.toString()
+        }));
 });
 
 module.exports = router;
