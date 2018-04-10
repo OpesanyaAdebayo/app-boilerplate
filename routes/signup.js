@@ -13,8 +13,8 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     let userObject = {
-        firstName: req.body.firstName.trim(),
-        lastName: req.body.lastName.trim(),
+        firstName: (req.body.firstName.charAt(0).toUpperCase() + req.body.firstName.slice(1)).trim(),
+        lastName: (req.body.lastName.charAt(0).toUpperCase() + req.body.firstName.slice(1)).trim(),
         email: req.body.email.trim(),
         password: req.body.password
       };
