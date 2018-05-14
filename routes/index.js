@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('soco', { title: 'Express' });
+  res.render('nono', { title: 'Express' });
 });
 
 module.exports = router;
