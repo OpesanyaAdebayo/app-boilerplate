@@ -7,3 +7,5 @@ cache:
   - node_modules
 notifications:
   email: false
+notifications:
+    slack: metamorphbeta:LHjJsekbrcce6U9D4JnrEqhB
