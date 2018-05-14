@@ -2,4 +2,6 @@ language: node_js
 node_js:
   - "8"
 script: mocha test
-before_deploy: npm start
+env:
+  global:
+  - MLAB_URI = careeradvisor:careeradvisor@ds229465.mlab.com:29465/careeradvisor
