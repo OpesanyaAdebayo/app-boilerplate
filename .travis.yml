@@ -1,11 +1,7 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 script: mocha test
 cache:
   directories:
   - node_modules
-notifications:
-  email: false
-notifications:
-    slack: metamorphbeta:LHjJsekbrcce6U9D4JnrEqhB
