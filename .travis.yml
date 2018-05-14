@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - "8"
 script: mocha test
-env:
-  global:
-  - MLAB_URI = careeradvisor:careeradvisor@ds229465.mlab.com:29465/careeradvisor
+cache:
+  directories:
+  - node_modules
+notifications:
+  email: false
