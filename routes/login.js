@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
         email: req.body.email,
         password: req.body.password
       };
-
+  // making changes
     login
     .processFormInput(userObject)
     .then(profile => tokenController.assignToken(profile))
